@@ -1,0 +1,267 @@
+$myFont: Helvetica, sans-serif
+$paraColor: rgb(255, 3, 51)
+$navColor:  rgba(255, 248, 246, 1)
+$shadowColor: rgba(0,0,0,0.2)
+$linkHover: rgba(236, 234, 246, 1)
+$footerColor: rgba(11, 13, 14, 0.7)
+
+html
+  background: url('img/wallpaper.jpg') no-repeat center center fixed
+  background-size: cover
+
+  //used to scroll smoothly
+  scroll-behavior: smooth
+
+p
+  font-family: 'Roboto Slab', serif
+
+body
+  font-family: $myFont
+  color: $paraColor
+  margin: 0
+
+header
+  font-family: 'Raleway', sans-serif
+  background: $navColor
+  text-align: center
+  position: sticky
+  top: 0
+  z-index: 1
+  height: 3rem
+  box-shadow: 5px 5px 15px $shadowColor
+
+  h1
+    font-size: 1.5rem
+    margin-top: 0
+    padding-top: 0.3em
+
+nav
+  position: fixed
+  top: 3rem
+  text-align: left
+  background: $navColor
+  width: 30%
+  z-index: 1
+  box-shadow: 5px 5px 5px $shadowColor
+
+  /*hidding nav for small screen devices*/
+  display: none
+
+  ul
+    margin: 0
+    padding: 0
+    list-style: none
+  li
+    padding: 0
+    margin: 0
+    a
+      display: block
+      padding: 0.5em 0.5em 0.5em 1em
+      text-decoration: none
+      color: $navColor
+      font-size: 1.1rem
+
+    a:link
+      color: inherit
+
+    a:visited
+      color: inherit
+
+    a:hover
+      background-color: $linkHover
+
+    a:active
+      text-decoration: underline
+
+
+/*nav appears when clicked on checkbox label*/
+input:checked ~ nav
+  display: block
+
+/*hiding the checkbox so we can use only the label*/
+input
+  display: none
+
+/*label positioned in header*/
+label
+  position: absolute
+  top: 0
+  height: 100%
+  display: flex
+  margin-left: 1em
+  align-items: center
+
+/*cursor pointer on burger menu*/
+label:hover
+  cursor: pointer
+
+/*drawing the burger menu using before and after*/
+label div,
+label div::before,
+label div::after
+  display: block
+  background: $paraColor
+  width: 1.7em
+  height: 2px
+  border-radius: 2px
+  position: relative
+
+label div::before,
+label div::after
+  content: ''
+  position: absolute
+
+label div::before
+  top: 0.45em
+
+label div::after
+  bottom: 0.45em
+
+
+/*the first image under the navbar and the quote on it*/
+img[src='img/poster.png']
+  width: 100%
+
+main > div
+  position: relative
+  p
+    font-family: 'Great Vibes', cursive
+    font-size: 2.3rem
+
+  div[class='quote'] div
+    text-align: right
+    margin-top: 0.6em
+    font-size: 1.3rem
+    font-style: italic
+
+.quote
+  position: absolute
+  top: 15%
+  right: 10%
+  margin: 0
+  width: 35%
+
+/*card layout styling*/
+section
+  display: flex
+  flex-flow: row wrap
+  justify-content: space-evenly
+
+section > div
+  margin: 1.3em 7px
+  background-color: $navColor
+
+  p
+    text-align: left
+    text-indent: 2em
+    padding: 0 2em
+
+  img
+    max-width: 100%
+
+/*footer styling*/
+footer
+  background: $footerColor
+  color: $navColor
+  font-size: 0.95rem
+
+  .footer-flex
+    margin-bottom: 0
+    display: flex
+    flex-flow: row wrap
+    justify-content: space-evenly
+
+    div
+      max-width: 38%
+      margin-right: 0.5em
+
+    div:last-child h3
+      text-align: center
+  a
+    color: $navColor
+    text-decoration: none
+
+  a:link
+    color: rgba(255, 255, 175, 1)
+
+  a:visited
+    color:  rgba(255, 176, 213, 1)
+
+  a:active
+    color: rgba(55, 255, 108, 1)
+
+  a:hover
+    text-decoration: underline
+hr
+  opacity: 0.3
+
+footer > p
+  margin-top: 0
+  margin-bottom: 0
+  padding-bottom: 0.5em
+  padding-left: 0.3em
+
+@media (min-width: 750px)
+
+  header
+    background: none
+    position: initial
+    margin: 1rem
+    box-shadow: unset
+    h1
+      font-size: 2rem
+    label
+      display: none
+
+  nav
+    position: sticky
+    top: 0
+    display: block
+    width: 100%
+    height: 3rem
+    box-shadow: 5px 5px 15px $shadowColor
+
+    ul
+      margin: 0
+      padding: 0
+      height: inherit
+      display: flex
+      flex-flow: row wrap
+      justify-content: space-between
+      align-items: center
+
+      li:last-child
+        margin-left: auto
+
+      a
+        box-sizing: border-box
+        height: 3rem
+        padding: 0.7em 1.5em
+
+  .quote
+    top: 30%
+
+  section > div
+    width: 80%
+
+    img
+      max-width: 100%
+
+@media (min-width: 1100px)
+
+  section > div
+    margin: 2em 5px 1em 5px
+    background-color: $navColor
+    width: 500px
+    transition: 0.4s
+
+    img
+      max-width: 100%
+
+  /* shadow effects + scaling for cards */
+  section > div:hover
+    transform: scale(1.1)
+    box-shadow: 5px 5px 15px $shadowColor
+
+  footer
+    margin-top: 2em
